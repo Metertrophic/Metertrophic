@@ -1,111 +1,838 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WAYTA</title>
+    <title>Expriments</title>
+    <link rel="icon" href="Angular Orange M Orbit Logo.png">
+</head>
+
+<body>
 
     <style>
+        /* =========================
+   GENERAL
+========================= */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #f8f0e8;
+            background: #f8f0e8;
+            color: #191715;
+            font-family: Arial, Helvetica, sans-serif;
             overflow-x: hidden;
-            min-height: 100vh;
         }
 
-        marquee {
-            width: 100%;
-            white-space: nowrap;
-            padding: 20px 0;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
-        .text {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont,
-            'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-            'Open Sans', 'Helvetica Neue', sans-serif;
+        .container {
+            width: 90%;
+            max-width: 1350px;
+            margin: auto;
         }
 
-        .what {
-            font-size: 210px;
+
+        /* =========================
+   NAVIGATION
+========================= */
+
+        nav {
+            height: 85px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ded4ca;
         }
 
-        .are-you {
-            font-size: 170px;
+        .logo {
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
             color: #c56f4f;
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-right a {
+            font-size: 12px;
+            color: #77716c;
+            transition: 0.3s;
+        }
+
+        .nav-right a:hover {
+            color: #c56f4f;
+        }
+
+        .nav-right .back {
+            border: 1px solid #cfc4ba;
+            padding: 13px 22px;
+            border-radius: 30px;
+            color: #191715;
+        }
+
+
+        /* =========================
+   HERO SECTION
+========================= */
+
+        .hero {
+            padding: 105px 0 90px;
+        }
+
+        .hero-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 55px;
+        }
+
+        .label {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: #8e8278;
+        }
+
+        .availability {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #8e8278;
+        }
+
+        .availability span {
+            color: #c56f4f;
+            margin-right: 8px;
+        }
+
+        .hero h1 {
+            font-size: clamp(65px, 11vw, 145px);
+            line-height: 0.88;
+            letter-spacing: -9px;
+            font-weight: 500;
+        }
+
+        .hero h1 em {
+            font-family: Georgia, serif;
+            font-weight: 400;
+            color: #c56f4f;
+        }
+
+        .hero-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-top: 55px;
+        }
+
+        .hero-bottom p {
+            max-width: 440px;
+            font-size: 16px;
+            line-height: 1.9;
+            color: #817870;
+        }
+
+        .hero-bottom strong {
+            color: #191715;
+            font-weight: 500;
+        }
+
+        .scroll-text {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: #c56f4f;
+        }
+
+
+        /* =========================
+   EXPERIMENTS SECTION
+========================= */
+
+        .experiments {
+            padding: 70px 0 110px;
+            border-top: 1px solid #ded4ca;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 45px;
+        }
+
+        .section-heading h2 {
+            font-size: 35px;
+            font-weight: 500;
+            letter-spacing: -1.5px;
+        }
+
+        .section-heading p {
+            font-size: 11px;
+            color: #92877e;
+            letter-spacing: 1px;
+        }
+
+        .experiment-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px 25px;
+        }
+
+
+        /* =========================
+   EXPERIMENT CARDS
+========================= */
+
+        .card {
+            cursor: pointer;
+        }
+
+        .card-visual {
+            height: 390px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+        }
+
+        .card:hover .card-visual {
+            transform: translateY(-7px);
+        }
+
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .card-info h3 {
+            font-size: 21px;
+            font-weight: 500;
+        }
+
+        .card-info p {
+            font-size: 10px;
+            color: #968a80;
+            letter-spacing: 2px;
+            margin-top: 8px;
+        }
+
+        .number {
+            font-size: 12px;
+            color: #c56f4f;
+        }
+
+
+        /* =========================
+   ARTWORK 01 - ORBIT
+========================= */
+
+        .orbit {
+            background: #e6d7c9;
+        }
+
+        .orbit-circle {
+            width: 210px;
+            height: 210px;
+            border: 2px solid #c56f4f;
+            border-radius: 50%;
+            position: relative;
+            animation: rotate 12s linear infinite;
+        }
+
+        .orbit-circle::before {
+            content: "";
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 1px solid #c56f4f;
+            border-radius: 50%;
+            top: 32px;
+            left: 32px;
+        }
+
+        .orbit-circle::after {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: #c56f4f;
+            border-radius: 50%;
+            top: 15px;
+            right: 25px;
+        }
+
+        .orbit-center {
+            position: absolute;
+            font-size: 65px;
+            font-family: Georgia, serif;
+            color: #c56f4f;
+        }
+
+
+        /* =========================
+   ARTWORK 02 - TYPOGRAPHY
+========================= */
+
+        .typography {
+            background: #c56f4f;
+            flex-direction: column;
+        }
+
+        .typography span {
+            font-size: clamp(55px, 9vw, 115px);
+            font-weight: 900;
+            letter-spacing: -8px;
+            color: #f8f0e8;
+            line-height: 0.85;
+            transition: 0.5s;
+        }
+
+        .typography:hover span {
+            letter-spacing: 1px;
+            transform: scale(1.05);
+        }
+
+        .typography small {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            font-size: 10px;
+            color: #f8f0e8;
+            letter-spacing: 3px;
+        }
+
+
+        /* =========================
+   ARTWORK 03 - 3D SHAPE
+========================= */
+
+        .dimension {
+            background: #242321;
+            perspective: 900px;
+        }
+
+        .cube {
+            width: 150px;
+            height: 150px;
+            background: #c56f4f;
+            transform: rotateX(55deg) rotateZ(45deg);
+            box-shadow: 25px 25px 0 #87452f,
+                50px 50px 0 #603526;
+            transition: 0.7s;
+        }
+
+        .dimension:hover .cube {
+            transform: rotateX(0deg) rotateZ(135deg);
+        }
+
+
+        /* =========================
+   ARTWORK 04 - MOTION
+========================= */
+
+        .motion {
+            background: #ded0c2;
+        }
+
+        .motion-circle {
+            width: 180px;
+            height: 180px;
+            border: 35px solid #c56f4f;
+            border-radius: 50%;
+            position: relative;
+            transition: 0.6s;
+        }
+
+        .motion-circle::after {
+            content: "";
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            background: #191715;
+            border-radius: 50%;
+            top: -40px;
+            right: -25px;
+        }
+
+        .motion:hover .motion-circle {
+            transform: scale(1.3) rotate(90deg);
+            border-radius: 30%;
+        }
+
+
+        /* =========================
+   THINKING SECTION
+========================= */
+
         .thinking {
-            font-size: 100px;
+            padding: 100px 0;
+            background: #e9ddd1;
         }
 
-        /* Tablets */
-        @media (max-width: 1024px) {
-            .what {
-                font-size: 150px;
+        .thinking-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .thinking h2 {
+            font-size: clamp(45px, 7vw, 85px);
+            font-weight: 500;
+            letter-spacing: -5px;
+            line-height: 1;
+        }
+
+        .thinking h2 em {
+            color: #c56f4f;
+            font-family: Georgia, serif;
+        }
+
+        .thinking p {
+            max-width: 350px;
+            color: #81766e;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+
+        /* =========================
+   FOOTER
+========================= */
+
+        footer {
+            padding: 35px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer p {
+            font-size: 10px;
+            color: #8d8178;
+            letter-spacing: 2px;
+        }
+
+        footer span {
+            color: #c56f4f;
+        }
+
+
+        /* =========================
+   ANIMATIONS
+========================= */
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
             }
 
-            .are-you {
-                font-size: 120px;
-            }
-
-            .thinking {
-                font-size: 75px;
+            to {
+                transform: rotate(360deg);
             }
         }
 
-        /* Mobile devices */
+
+        /* =========================
+   TABLETS
+========================= */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                padding: 80px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -5px;
+            }
+
+            .card-visual {
+                height: 300px;
+            }
+
+            .thinking-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+        }
+
+
+        /* =========================
+   MOBILE
+========================= */
+
         @media (max-width: 600px) {
-            marquee {
-                padding: 35px 0;
+
+            .container {
+                width: 90%;
             }
 
-            .what {
-                font-size: 85px;
+            nav {
+                height: 70px;
             }
 
-            .are-you {
-                font-size: 65px;
+            .nav-right {
+                gap: 15px;
+            }
+
+            .nav-right a {
+                font-size: 10px;
+            }
+
+            .nav-right .back {
+                padding: 10px 13px;
+            }
+
+            .hero {
+                padding: 70px 0;
+            }
+
+            .hero-top {
+                margin-bottom: 50px;
+            }
+
+            .hero h1 {
+                font-size: clamp(55px, 14vw, 85px);
+                letter-spacing: -4px;
+            }
+
+            .hero-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 30px;
+                margin-top: 40px;
+            }
+
+            .hero-bottom p {
+                font-size: 14px;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .experiment-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .card-visual {
+                height: 320px;
             }
 
             .thinking {
-                font-size: 42px;
+                padding: 75px 0;
             }
+
+            .thinking h2 {
+                letter-spacing: -3px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 18px;
+                align-items: flex-start;
+            }
+
         }
 
-        /* Small phones */
+
+        /* =========================
+   SMALL PHONES
+========================= */
+
         @media (max-width: 380px) {
-            .what {
-                font-size: 65px;
+
+            .logo {
+                font-size: 12px;
             }
 
-            .are-you {
-                font-size: 50px;
+            .nav-right {
+                gap: 10px;
             }
 
-            .thinking {
-                font-size: 32px;
+            .nav-right a {
+                font-size: 9px;
             }
+
+            .card-visual {
+                height: 260px;
+            }
+
+            .orbit-circle {
+                transform: scale(0.8);
+            }
+
         }
-
     </style>
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <marquee behavior="scroll" direction="left" scrollamount="55">
+        <div class="container">
 
-        <span class="text what">WHAT</span>
+            <!-- NAVIGATION -->
 
-        <span class="text are-you">ARE YOU</span>
+            <nav>
 
-        <span class="text thinking">THINKING ABOUT</span>
+                <a href="index.html" class="logo">
+                    METER<span>TROPHIC.</span>
+                </a>
 
-    </marquee>
+                <div class="nav-right">
 
-</body>
+                    <a href="index.html">Home</a>
+
+                    <a href="#experiments">Explore</a>
+
+                    <a href="index.html" class="back">
+                        BACK TO PORTFOLIO ↗
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <!-- HERO -->
+
+            <section class="hero">
+
+                <div class="hero-top">
+
+                    <span class="label">
+                        CREATIVE LAB / 001
+                    </span>
+
+                    <span class="availability">
+                        <span>●</span> ALWAYS EXPLORING
+                    </span>
+
+                </div>
+
+
+                <h1>
+                    Curiosity,<br>
+                    <em>in motion.</em>
+                </h1>
+
+
+                <div class="hero-bottom">
+
+                    <p>
+                        Not everything needs a purpose.
+                        Some things just need to be explored.
+
+                        Welcome to my creative playground —
+                        a space for ideas, experiments,
+                        unexpected interactions and things
+                        that happen when imagination takes over.
+                    </p>
+
+                    <span class="scroll-text">
+                        SCROLL TO EXPLORE ↓
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- EXPERIMENTS -->
+
+            <section class="experiments" id="experiments">
+
+                <div class="section-heading">
+
+                    <h2>Things I've been playing with.</h2>
+
+                    <p>VISUAL STUDIES / INTERACTION / MOTION</p>
+
+                </div>
+
+
+                <div class="experiment-grid">
+
+
+                    <!-- PROJECT 01 -->
+
+                    <div class="card">
+
+                        <div class="card-visual orbit">
+
+                            <div class="orbit-circle"></div>
+
+                            <div class="orbit-center">
+                                M.
+                            </div>
+
+                        </div>
+
+                        <div class="card-info">
+
+                            <div>
+                                <h3>Orbital Thinking</h3>
+                                <p>CSS / ANIMATION / VISUAL STUDY</p>
+                            </div>
+
+                            <span class="number">01</span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROJECT 02 -->
+
+                    <div class="card">
+
+                        <div class="card-visual typography">
+
+                            <span>TYPE</span>
+                            <span>PLAY.</span>
+
+                            <small>TYPOGRAPHY EXPERIMENT</small>
+
+                        </div>
+
+                        <div class="card-info">
+
+                            <div>
+                                <h3>Type Without Rules</h3>
+                                <p>TYPOGRAPHY / CREATIVE DIRECTION</p>
+                            </div>
+
+                            <span class="number">02</span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROJECT 03 -->
+
+                    <div class="card">
+
+                        <div class="card-visual dimension">
+
+                            <div class="cube"></div>
+
+                        </div>
+
+                        <div class="card-info">
+
+                            <div>
+                                <h3>Another Dimension</h3>
+                                <p>3D / CSS / TRANSFORMATIONS</p>
+                            </div>
+
+                            <span class="number">03</span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROJECT 04 -->
+
+                    <div class="card">
+
+                        <div class="card-visual motion">
+
+                            <div class="motion-circle"></div>
+
+                        </div>
+
+                        <div class="card-info">
+
+                            <div>
+                                <h3>Motion Studies</h3>
+                                <p>INTERACTION / CSS / MOTION</p>
+                            </div>
+
+                            <span class="number">04</span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- THINKING SECTION -->
+
+            <section class="thinking">
+
+                <div class="container thinking-inner">
+
+                    <h2>
+                        The best ideas<br>
+                        start with <em>what if?</em>
+                    </h2>
+
+                    <p>
+                        This space is constantly evolving.
+                        New ideas, new experiments and
+                        new ways of looking at the digital world.
+
+                        There's always something next.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer>
+
+                <div class="footer-inner">
+
+                    <p>© 2026 METERTROPHIC CJ</p>
+
+                    <p>BUILT WITH <span>CURIOSITY.</span></p>
+
+                </div>
+
+            </footer>
+
+        </div>
+
+    </body>
+
 </html>

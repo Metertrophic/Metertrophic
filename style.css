@@ -44,30 +44,28 @@ a {
 
 .brand {
     display: flex;
-    gap: 11px;
     align-items: center;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .13em
+    gap: 10px;
+    text-decoration: none;
+}
+
+.brand-logo {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+}
+
+.brand span {
+    font-size: 15px;
+    letter-spacing: 2px;
 }
 
 .brand small {
     display: block;
-    font: 9px 'DM Mono', monospace;
-    color: #89837e;
-    letter-spacing: .13em;
-    margin-top: 4px
-}
-
-.brand-mark {
-    font-size: 25px;
-    letter-spacing: -.1em
-}
-
-.brand-mark span {
-    font-size: 13px;
-    color: #c56f4f;
-    vertical-align: top
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 5px;
 }
 
 .nav {
